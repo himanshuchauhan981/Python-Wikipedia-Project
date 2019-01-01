@@ -1,0 +1,50 @@
+<html>
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Acme'>
+  <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Wikipedia Viewer</title>
+</head>
+<body>
+  <div class="container-fluid">
+    <p class="text-center heading1">Wikipedia Viewer</p>
+    <p class="text-center heading2">Find any Wikipedia page easily</p>
+    <div class="container" style="width:33vw;">
+      <div class="row" style="margin-top: 10px;">
+        <form action="http://localhost:5000/searchBox" method="POST">
+          <input type="text" class="form-control" name="word" style=" font-size:25px;margin:0 auto;height:50px;border-radius:50px 50px 50px 50px;">
+          <div class="col-md-4">
+            <button type="submit" class="form-control btn-warning w3-margin-top">Search</button>
+          </div>
+        </form>
+        <form action="http://localhost:5000/randomPage" method="POST">
+          <div class="col-md-8">
+            <button type="submit" class="form-control btn-success">Random Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      {% block content %}
+        {% set count = namespace(a=0) %}
+        {% for  i,j  in result|zip(detailTuple) %}
+          <div class="container" style="width:80vw;">
+            <div class="card" style="background-color:white;">
+                <div class="card-body">
+                    <h3 class="card-title cards"><a href="{{ urlTuple[count.a] }}" target="_blank">{{ i }}</a></h3>
+                    <p class="card-text">{{ j }}</p>
+                </div>
+            </div>
+          </div>
+        {% set count.a = count.a + 1 %}
+        {% endfor %}
+      {% endblock content %}
+    </div>
+  </div>
+</body>
+</html>
