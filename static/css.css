@@ -1,0 +1,40 @@
+body{
+  background-image:url('Background.jpeg')
+}
+.heading1{
+  font-family:'Acme';
+  font-size: 100px;
+  color:red;
+}
+.heading2{
+  font-family:'Acme';
+  font-size:50px;
+  color:yellow;
+}
+.text_box{
+  width:650px;
+  margin:0 auto;
+  height:50px;
+  border-radius:50px 50px 50px 50px;
+}
+.card{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 0.5;
+}
+.card:hover {
+  box-shadow: 16px 16px 16px 16px rgba(0,0,0,0.2);
+  border: 5px solid #333333;
+}
+.cards{
+  font-family:'Aldrich';
+  opacity:1;
+}
+.card-text{
+  opacity: 1;
+}
+.cards:hover{
+  color: red;
+}
+.card-text:hover{
+  color:green;
+}
